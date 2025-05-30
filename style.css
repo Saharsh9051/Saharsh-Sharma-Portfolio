@@ -1,0 +1,459 @@
+/* Global Resets & Base Styles */
+:root {
+    --bg-color: #121212; /* Dark background */
+    --text-color: #E0E0E0; /* Light gray text */
+    --primary-color: #212121; /* Slightly lighter dark for cards/elements */
+    --accent-color: #FFD700; /* Gold for accents/CTA - you can change this */
+    --accent-hover: #f0c400;
+    --border-color: #333333;
+    --font-primary: 'Inter', sans-serif;
+    --font-secondary: 'Montserrat', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-secondary);
+    font-weight: 700;
+    color: #FFFFFF; /* Pure white for main headings */
+    margin-bottom: 1rem;
+}
+
+h1 { font-size: 3rem; }
+h2 { font-size: 2.5rem; text-align: center; margin-bottom: 2.5rem; }
+h3 { font-size: 1.5rem; }
+
+p {
+    margin-bottom: 1rem;
+}
+
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--accent-hover);
+}
+
+section {
+    padding: 80px 0;
+}
+
+/* Navigation Bar */
+#navbar {
+    background-color: rgba(18, 18, 18, 0.85); /* Slightly transparent dark */
+    backdrop-filter: blur(10px);
+    color: #fff;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+
+#navbar.scrolled {
+    background-color: #121212; /* Solid on scroll */
+}
+
+#navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#navbar .logo {
+    font-family: var(--font-secondary);
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #FFFFFF;
+}
+#navbar .logo:hover {
+    color: var(--accent-color);
+}
+
+#navbar nav ul {
+    list-style: none;
+    display: flex;
+}
+
+#navbar nav ul li {
+    margin-left: 25px;
+}
+
+#navbar nav ul li a {
+    color: var(--text-color);
+    font-weight: 500;
+    padding: 5px 0;
+    position: relative;
+}
+
+#navbar nav ul li a:hover {
+    color: var(--accent-color);
+}
+#navbar nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease;
+}
+#navbar nav ul li a:hover::after {
+    width: 100%;
+}
+
+/* Mobile Nav Toggler */
+.nav-toggler {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+.nav-toggler span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 5px 0;
+    transition: all 0.3s ease;
+}
+
+
+/* Hero Section */
+.hero-section {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(rgba(18, 18, 18, 0.7), rgba(18, 18, 18, 0.9)), url('your-blurred-video-placeholder.jpg') no-repeat center center/cover;
+    /* Replace 'your-blurred-video-placeholder.jpg' or use just the gradient */
+    /* background: radial-gradient(ellipse at center, #303040 0%, #121212 70%); /* Example gradient */
+    color: #FFFFFF;
+    padding-top: 80px; /* Account for fixed navbar */
+}
+.hero-section h1 {
+    font-size: 4rem; /* Larger for hero */
+    margin-bottom: 0.5rem;
+    font-weight: 800;
+}
+.hero-section .tagline {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    max-width: 700px;
+    color: var(--text-color);
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: 2px solid var(--accent-color);
+}
+.cta-button:hover {
+    background-color: var(--accent-hover);
+    color: var(--bg-color);
+    transform: translateY(-2px);
+}
+
+.social-icons {
+    margin-top: 2rem;
+}
+.social-icons a {
+    color: var(--text-color);
+    font-size: 1.5rem;
+    margin: 0 10px;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+.social-icons a:hover {
+    color: var(--accent-color);
+    transform: scale(1.1);
+}
+
+/* Portfolio Section */
+.portfolio-section {
+    background-color: var(--primary-color); /* Slightly different dark shade */
+}
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+.portfolio-card {
+    background-color: var(--bg-color);
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0; /* For scroll reveal */
+    transform: translateY(20px); /* For scroll reveal */
+}
+.portfolio-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.portfolio-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+.portfolio-card .card-icon {
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+.portfolio-card h3 {
+    margin-bottom: 0.5rem;
+}
+.portfolio-card p {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    min-height: 60px; /* Ensure consistent card height */
+}
+.btn-card {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 10px 20px;
+    background-color: transparent;
+    color: var(--accent-color);
+    border: 2px solid var(--accent-color);
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.btn-card:hover {
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+}
+
+/* About Me Section */
+.about-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 3rem;
+}
+.about-image {
+    flex: 1;
+    max-width: 300px;
+}
+.about-image img {
+    width: 100%;
+    border-radius: 50%; /* Circular image */
+    border: 5px solid var(--border-color);
+}
+.about-text {
+    flex: 2;
+}
+.tools-used {
+    margin-top: 1.5rem;
+}
+.tools-used h4 {
+    margin-bottom: 0.5rem;
+}
+.tools-used span {
+    display: inline-block;
+    background-color: var(--primary-color);
+    padding: 5px 10px;
+    border-radius: 4px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    border: 1px solid var(--border-color);
+}
+
+/* Contact Section */
+.contact-section {
+    background-color: var(--primary-color);
+}
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto 2rem auto;
+}
+.form-group {
+    margin-bottom: 1.5rem;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #FFFFFF;
+}
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-primary);
+}
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.3); /* Accent color focus glow */
+}
+.contact-form .cta-button {
+    width: 100%;
+    cursor: pointer;
+}
+.contact-info-icons {
+    text-align: center;
+    margin-top: 3rem;
+}
+.contact-info-icons a {
+    display: inline-flex; /* Changed to inline-flex */
+    align-items: center;
+    margin: 0 15px 10px; /* Added bottom margin */
+    font-size: 1.1rem;
+    color: var(--text-color);
+}
+.contact-info-icons a i {
+    margin-right: 8px;
+    font-size: 1.3rem;
+    color: var(--accent-color);
+}
+.contact-info-icons a:hover,
+.contact-info-icons a:hover i {
+    color: var(--accent-hover);
+}
+
+
+/* Footer */
+footer {
+    background-color: var(--bg-color);
+    text-align: center;
+    padding: 2rem 0;
+    border-top: 1px solid var(--border-color);
+}
+footer .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+footer p {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+footer .social-icons a {
+    font-size: 1.2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    h1 { font-size: 2.5rem; }
+    .hero-section h1 { font-size: 3rem; }
+    h2 { font-size: 2rem; }
+
+    #navbar .container {
+        position: relative;
+    }
+    #navbar nav {
+        display: none; /* Hidden by default on mobile */
+        position: absolute;
+        top: 100%; /* Position below navbar */
+        left: 0;
+        width: 100%;
+        background-color: #181818; /* Solid background for mobile dropdown */
+        flex-direction: column;
+        padding: 1rem 0;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    #navbar nav.active {
+        display: flex; /* Show when active */
+    }
+    #navbar nav ul {
+        flex-direction: column;
+        width: 100%;
+    }
+    #navbar nav ul li {
+        margin: 0;
+        text-align: center;
+    }
+    #navbar nav ul li a {
+        display: block;
+        padding: 1rem;
+        border-bottom: 1px solid var(--border-color);
+    }
+    #navbar nav ul li:last-child a {
+        border-bottom: none;
+    }
+    #navbar nav ul li a::after {
+        display: none; /* Remove underline effect for mobile nav */
+    }
+
+    .nav-toggler {
+        display: block; /* Show toggler on mobile */
+    }
+    .nav-toggler.active span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .nav-toggler.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .nav-toggler.active span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .about-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .about-image {
+        margin-bottom: 2rem;
+        max-width: 250px;
+    }
+    .contact-info-icons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .contact-info-icons a {
+        margin: 10px 0; /* Stack them vertically */
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section h1 { font-size: 2.5rem; }
+    .hero-section .tagline { font-size: 1rem; }
+    .cta-button { padding: 10px 20px; font-size: 1rem; }
+    .portfolio-grid { grid-template-columns: 1fr; } /* Single column on very small screens */
+}
